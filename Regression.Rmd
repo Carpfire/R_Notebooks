@@ -1,0 +1,47 @@
+---
+title: "R Notebook"
+output: pdf_document
+---
+
+
+a)
+```{r}
+library(ISLR)
+```
+
+```{r}
+data <- Auto
+
+```
+
+```{r}
+model.fit <- lm(mpg ~ horsepower, data)
+```
+
+```{r}
+summary(model.fit)
+```
+i)ii)iii)
+There is a moderate to strong linear relationship between teh predictor and the response variable seen by the $R^2 = 0.606$. The realtionship between predictor and response is negative as seen in the negative slope. This says that as we increase our horsepower our miles per gallon decreasing, which agrees with intution. 
+iv)
+
+```{r}
+print("Confidence Interval: "); predict(model.fit, data.frame(horsepower = 98), interval="confidence")
+print("Prediction Interval: ");predict(model.fit, data.frame(horsepower = 98), interval="prediction")
+```
+
+```{r}
+plot(data$horsepower, data$mpg, col = "blue")
+abline(model.fit$coefficients[1], model.fit$coefficients[2], col="red")
+```
+```{r}
+par(mfrow=c(2,2))
+plot(model.fit)
+```
+The extreme values, the low and high end of the horsepower spectrum, are poorly fitted. This is evidence of some non linearity in the model.
+
+
+
+
+
+

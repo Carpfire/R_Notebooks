@@ -1,0 +1,46 @@
+---
+title: "R Notebook"
+output: pdf_document
+---
+
+```{r}
+library(MASS)
+medv <-Boston$medv
+```
+a)
+```{r}
+library(boot)
+N<- length(medv)
+mu_hat <- 1/N*sum(medv)
+mu_hat
+```
+b)
+```{r}
+se_hat<- sqrt(1/(N-1)*sum((medv - mu_hat)**2))/sqrt(N)
+se_hat
+```
+c)
+```{r}
+mu_func <- function(data, index){
+  data<-data[index]
+  size<-length(index)
+  mu_hat<-1/size * sum(data)
+  return(mu_hat)
+}
+```
+
+```{r}
+boot_obj<-boot(medv,mu_func, R=1000)
+boot_obj
+```
+```{r}
+hist(boot_obj$t, main="Bootstrap Mu", xlab="Mu")
+```
+
+
+
+
+
+
+
+

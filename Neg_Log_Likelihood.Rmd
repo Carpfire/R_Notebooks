@@ -1,0 +1,42 @@
+---
+title: "R Notebook"
+output: pdf_document
+---
+
+a) A visual inspection would probably be a good place to start. Recognizing things like whether the data is discrete or continous, are there negative values, are they bounded? All are probably good questions to start with
+b)
+```{r}
+set.seed(5)
+```
+c)
+```{r}
+N<-100
+```
+d)
+```{r}
+x<- rnorm(N, mean=5, sd=3)
+
+```
+e)
+```{r}
+mean(x);sd(x)
+```
+mean(x) and sd(x) represent the mean and standard deviation of the data we have generated.
+
+f)
+```{r}
+negLL<- function(mu, sigma){
+  R = dnorm(x, mu, sigma)
+  -sum(log(R))
+}
+```
+g)
+```{r}
+library(stats4)
+
+mle(negLL, start=list(mu =2, sigma=6), method="L-BFGS-B", lower=c(-Inf, 0), upper=c(Inf, Inf))
+```
+
+
+
+

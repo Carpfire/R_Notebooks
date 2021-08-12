@@ -1,0 +1,27 @@
+---
+title: "R Notebook"
+output: pdf_document
+---
+
+```{r}
+power <- function(){
+  print(2^3)
+}
+power()
+
+```
+```{r}
+power2<- function(x,a){
+  print(x^a)
+}
+power2(3,8)
+```
+```{r}
+power3<- function(x,a){
+  return(x^a)
+}
+
+y <- power3(3,8)
+print(y)
+```
+

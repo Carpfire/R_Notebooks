@@ -1,0 +1,63 @@
+---
+title: "HW 2"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+Problem A
+```{r}
+
+college <- read.csv("College.csv")
+```
+Problem B
+```{r}
+fix(college)
+```
+```{r}
+rownames(college)=college[,1]
+fix(college)
+```
+```{r}
+college=college[,-1]
+fix(college)
+```
+Problem C(i)
+```{r}
+
+summary(college)
+```
+Problem C(ii)
+```{r}
+pairs(college[,2:11])
+
+```
+Problem C(iii)
+```{r}
+boxplot(Outstate~Private, data=college)
+```
+
+Problem C(iv)
+```{r}
+Elite=rep("No", nrow(college))
+Elite[college$Top10perc>50]="yes"
+Elite=as.factor(Elite)
+college=data.frame(college,Elite)
+```
+```{r}
+summary(college)
+```
+```{r}
+boxplot(Outstate~Elite, data=college)
+```
+Problem C(v)
+```{r}
+par(mfrow=c(2,2))
+hist(college$Expend)
+hist(college$Apps)
+hist(college$PhD)
+hist(college$Room.Board)
+```
+
+
+
